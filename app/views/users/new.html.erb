@@ -1,13 +1,14 @@
 <section>
-Hey hey
 
-<form action="/user" method="post">
-  <label for="username">Username</label>
-  <input type="text" id="username" name="user[username]">
-  <label for="email">Email</label>
-  <input type="email" id="email" name="user[email]">
-  <label for="password">Password</label>
-  <input type="text" id="password" name="user[password]">
-  <button type="submit">Create User</button>
-</form>
+
+
+  <%= form_with model: @user do |form| %>
+   <%= form.text_field :username %>
+   <%= form.label :username, "Username" %>
+   <%= form.email_field :email, placeholder: "jo@jo.com" %>
+   <%= form.label :email, "Email" %>
+   <%= form.text_field :password %>
+   <%= form.label :password, "Password" %>
+   <%= form.submit "Submit" %>
+  <% end %>
 </section>
