@@ -12,9 +12,15 @@
 
   <body>
     <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
+      <% if msg.is_a?(Enumerable) %>
+        <% msg.each do |m| %>
+          <%= content_tag :div, m, class: name %>
+        <% end %>
+      <% else %>
+        <%= content_tag :div, msg, class: name %>
+      <% end %>
     <% end %>
-
+    
     <%= yield %>
   </body>
 </html>

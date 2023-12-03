@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to new_users_path
     else
+      flash.now[:notice] = "User couldn't be saved"
+      flash.now[:errors] = @user.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
@@ -23,7 +25,8 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user
     else
-      flash[:notice] = "failed to update the record"
+      flash.now[:notice] = "failed to update the record"
+      flash.now[:errors] = @user.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end
