@@ -1,0 +1,14 @@
+<% if @user.errors.any? %>
+  <p>Object couldn't be saved, error messages: <%= @user.errors.full_messages %> </p>
+<% end %>
+
+
+<%= form_with model: @user do |form| %>
+  <%= form.text_field :username, value: "jbk" %>
+  <%= form.label :username, "your username here pls" %>
+  <%= form.email_field :email, placeholder: "jo@jo.com" %>
+  <%= form.label :email %>
+  <%= form.text_field :password %>
+  <%= form.label :password %>
+  <%= form.submit "Update" %>
+<% end %>
