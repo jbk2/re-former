@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user
     else
-      flash.now[:notice] = "failed to update the record"
+      flash.now[:notice] = "User couldn't be updated"
       flash.now[:errors] = @user.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
